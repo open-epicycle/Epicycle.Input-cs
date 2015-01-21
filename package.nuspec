@@ -3,7 +3,7 @@
   <metadata>
     <id>Epicycle.Input-cs</id>
     <version>0.1.0.0</version>
-    <title>Epicycle.Physics (.NET)</title>
+    <title>Epicycle.Input (.NET)</title>
     <authors>Epicycle</authors>
     <owners>Epicycle</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
@@ -18,7 +18,7 @@
     <releaseNotes>https://github.com/open-epicycle/Epicycle.Input-cs/blob/ver-$version$/README.md</releaseNotes>
     <copyright>Copyright 2015 Epicycle</copyright>
     <language />
-    <tags>epicycle lib library input</tags>
+    <tags>epicycle lib library input sensor sensors simulation playback</tags>
 
     <dependencies>
       <dependency id="Epicycle.Commons-cs" version="0.1.6.0" />
