@@ -21,3 +21,4 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.0** [IN DEVELOPMENT]
+  * Moving the sensor infrastructure from Epicycle.Physics-cs
