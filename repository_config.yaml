@@ -1,9 +1,9 @@
-title: Epicycle.Physics (.NET)
+title: Epicycle.Input (.NET)
 url: https://github.com/open-epicycle/Epicycle.Geodesy-cs
 summary: "Epicycle .NET input library."
 
 organization: Epicycle
-tags: epicycle lib library input
+tags: epicycle lib library input sensor sensors simulation playback
 copyright: Copyright 2015 Epicycle
 license_url: http://www.apache.org/licenses/LICENSE-2.0
 
