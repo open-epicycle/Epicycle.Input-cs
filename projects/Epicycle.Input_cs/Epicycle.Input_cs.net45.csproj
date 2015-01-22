@@ -65,6 +65,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BidirectionalMovement.cs" />
+    <Compile Include="Keyboard\BidirectionalMovementKeys.cs" />
+    <Compile Include="Keyboard\IKeyboard.cs" />
+    <Compile Include="Keyboard\KeyEventArgs.cs" />
+    <Compile Include="Keyboard\KeyState.cs" />
+    <Compile Include="Keyboard\SimpleKey.cs" />
+    <Compile Include="Keyboard\ToggleKey.cs" />
+    <Compile Include="Keyboard\ToggleKeyEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sensors\GeoLocation\GeoLocationProvider.cs" />
     <Compile Include="Sensors\GeoLocation\GeoLocationSensorSample.cs" />
