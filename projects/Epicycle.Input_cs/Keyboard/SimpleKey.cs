@@ -20,7 +20,7 @@ using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class SimpleKey<TKeyId>
+    public sealed class SimpleKey<TKeyId> : ISimpleKey<TKeyId>
     {
         public readonly IKeyboard<TKeyId> _keyboard;
         public readonly TKeyId _keyId;

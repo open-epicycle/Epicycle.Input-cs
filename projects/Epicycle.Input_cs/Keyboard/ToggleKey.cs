@@ -20,7 +20,7 @@ using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class ToggleKey<TKeyId>
+    public sealed class ToggleKey<TKeyId> : IToggleKey<TKeyId>
     {
         private readonly SimpleKey<TKeyId> _key;
 
@@ -47,7 +47,7 @@ namespace Epicycle.Input.Keyboard
 
         public event EventHandler<ToggleKeyEventArgs<TKeyId>> OnStateChange;
 
-        void OnKeyPress(object sender, TKeyId e)
+        private void OnKeyPress(object sender, TKeyId e)
         {
             IsToggled = !IsToggled;
 

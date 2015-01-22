@@ -20,7 +20,7 @@ using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class BidirectionalMovementKeys<TKeyId>
+    public sealed class BidirectionalMovementKeys<TKeyId> : IBidirectionalMovementKeys<TKeyId>
     {
         private readonly IKeyboard<TKeyId> _keyboard;
         private readonly TKeyId _positiveDirectionKeyId;
@@ -56,7 +56,7 @@ namespace Epicycle.Input.Keyboard
 
         public BidirectionalMovement MovementDirection { get; private set; }
 
-        public void OnKeyStateChange(object sender, KeyEventArgs<TKeyId> eventArgs)
+        private void OnKeyStateChange(object sender, KeyEventArgs<TKeyId> eventArgs)
         {
             var isPositiveKey = eventArgs.KeyId.Equals(_positiveDirectionKeyId);
 
