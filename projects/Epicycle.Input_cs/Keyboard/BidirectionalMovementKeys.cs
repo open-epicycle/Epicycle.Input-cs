@@ -34,7 +34,7 @@ namespace Epicycle.Input.Keyboard
 
             MovementDirection = BidirectionalMovement.Still;
 
-            keyboard.OnKeyStateChange += OnKeyStateChange;
+            keyboard.OnKeyEvent += OnKeyEvent;
         }
 
         public event EventHandler<BidirectionalMovement> OnStateChange;
@@ -56,8 +56,13 @@ namespace Epicycle.Input.Keyboard
 
         public BidirectionalMovement MovementDirection { get; private set; }
 
-        private void OnKeyStateChange(object sender, KeyEventArgs<TKeyId> eventArgs)
+        private void OnKeyEvent(object sender, KeyEventArgs<TKeyId> eventArgs)
         {
+            if(eventArgs.NewState == KeyState.Repeat)
+            {
+                return;
+            }
+
             var isPositiveKey = eventArgs.KeyId.Equals(_positiveDirectionKeyId);
 
             if (!isPositiveKey && !eventArgs.KeyId.Equals(_negativeDirectionKeyId))

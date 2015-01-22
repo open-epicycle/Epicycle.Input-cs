@@ -22,5 +22,6 @@ namespace Epicycle.Input.Keyboard
     {
         Pressed,
         Released,
+        Repeat,
     }
 }

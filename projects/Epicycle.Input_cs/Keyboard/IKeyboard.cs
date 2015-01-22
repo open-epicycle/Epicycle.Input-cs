@@ -24,6 +24,6 @@ namespace Epicycle.Input.Keyboard
     {
         KeyState GetKeyState(TKeyId keyId);
 
-        event EventHandler<KeyEventArgs<TKeyId>> OnKeyStateChange;
+        event EventHandler<KeyEventArgs<TKeyId>> OnKeyEvent;
     }
 }

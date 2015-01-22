@@ -29,7 +29,7 @@ namespace Epicycle.Input.Keyboard
 
         public static void SendKeyEvent(this Mock<IKeyboard<int>> @this, int keyId, KeyState newState)
         {
-            @this.Raise(m => m.OnKeyStateChange += null, @this.Object, new KeyEventArgs<int>(keyId, newState));
+            @this.Raise(m => m.OnKeyEvent += null, @this.Object, new KeyEventArgs<int>(keyId, newState));
         }
     }
 }

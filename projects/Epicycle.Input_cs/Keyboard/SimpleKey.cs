@@ -30,7 +30,7 @@ namespace Epicycle.Input.Keyboard
             _keyboard = keyboard;
             _keyId = keyId;
 
-            keyboard.OnKeyStateChange += OnKeyStateChange;
+            keyboard.OnKeyEvent += OnKeyEvent;
 
             IsPressed = false;
         }
@@ -49,8 +49,13 @@ namespace Epicycle.Input.Keyboard
 
         public bool IsPressed { get; private set; }
 
-        private void OnKeyStateChange(object sender, KeyEventArgs<TKeyId> eventArgs)
+        private void OnKeyEvent(object sender, KeyEventArgs<TKeyId> eventArgs)
         {
+            if (eventArgs.NewState == KeyState.Repeat)
+            {
+                return;
+            }
+
             if (!eventArgs.KeyId.Equals(KeyId))
             {
                 return; // Not our key
