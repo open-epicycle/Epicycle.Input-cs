@@ -16,13 +16,16 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Input-cs
 // ]]]]
 
-using System;
-
 namespace Epicycle.Input.Keyboard
 {
-    public class NoSuchKeyExcpetion : Exception
+    public interface IKeyboardAdapter<TKeyId, TSourceKeyId> : IKeyboard<TKeyId>
     {
-        public NoSuchKeyExcpetion(string keyName)
-            : base(string.Format("The key {0} does not exist!", keyName)) { }
+        IKeyboard<TSourceKeyId> SourceKeyboard { get; }
+
+        void MapKey(TKeyId keyId, TSourceKeyId sourceKeyId);
+        bool IsThisKeyMapped(TKeyId keyId);
+        bool IsSourceKeyMapped(TSourceKeyId sourceKeyId);
+        TKeyId ToThisKeyId(TSourceKeyId sourceKeyId);
+        TSourceKeyId ToSourceKeyId(TKeyId keyId);
     }
 }

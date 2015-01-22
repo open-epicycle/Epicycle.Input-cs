@@ -70,11 +70,13 @@
     <Compile Include="Keyboard\IBidirectionalMovementKeys.cs" />
     <Compile Include="Keyboard\IKeyBasedInput.cs" />
     <Compile Include="Keyboard\IKeyboard.cs" />
+    <Compile Include="Keyboard\IKeyboardAdapter.cs" />
     <Compile Include="Keyboard\IKeyboardBaseInput.cs" />
     <Compile Include="Keyboard\ISimpleKey.cs" />
     <Compile Include="Keyboard\IToggleKey.cs" />
     <Compile Include="Keyboard\KeyEventArgs.cs" />
     <Compile Include="Keyboard\KeyEventType.cs" />
+    <Compile Include="Keyboard\KeyboardAdapter.cs" />
     <Compile Include="Keyboard\NoSuchKeyExcpetion.cs" />
     <Compile Include="Keyboard\SimpleKey.cs" />
     <Compile Include="Keyboard\ToggleKey.cs" />
