@@ -75,6 +75,7 @@
     <Compile Include="Keyboard\IToggleKey.cs" />
     <Compile Include="Keyboard\KeyEventArgs.cs" />
     <Compile Include="Keyboard\KeyEventType.cs" />
+    <Compile Include="Keyboard\NoSuchKeyExcpetion.cs" />
     <Compile Include="Keyboard\SimpleKey.cs" />
     <Compile Include="Keyboard\ToggleKey.cs" />
     <Compile Include="Keyboard\ToggleKeyEventArgs.cs" />
