@@ -33,6 +33,16 @@ namespace Epicycle.Input.Keyboard
             _key.OnKeyPress += OnKeyPress;
         }
 
+        private void OnKeyPress(object sender, SimpleKeyEventArgs<TKeyId> eventArgs)
+        {
+            IsToggled = !IsToggled;
+
+            if (OnStateChange != null)
+            {
+                OnStateChange(this, new ToggleKeyEventArgs<TKeyId>(_key.KeyId, IsToggled));
+            }
+        }
+
         public IKeyboard<TKeyId> Keyboard
         {
             get { return _key.Keyboard; }
@@ -46,15 +56,5 @@ namespace Epicycle.Input.Keyboard
         public bool IsToggled { get; private set; }
 
         public event EventHandler<ToggleKeyEventArgs<TKeyId>> OnStateChange;
-
-        private void OnKeyPress(object sender, TKeyId e)
-        {
-            IsToggled = !IsToggled;
-
-            if(OnStateChange != null)
-            {
-                OnStateChange(this, new ToggleKeyEventArgs<TKeyId>(_key.KeyId, IsToggled));
-            }
-        }
     }
 }

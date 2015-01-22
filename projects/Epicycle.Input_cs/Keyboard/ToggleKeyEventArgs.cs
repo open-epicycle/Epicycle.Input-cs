@@ -16,9 +16,11 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Input-cs
 // ]]]]
 
+using System;
+
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class ToggleKeyEventArgs<TKeyId>
+    public sealed class ToggleKeyEventArgs<TKeyId> : EventArgs
     {
         private readonly TKeyId _keyId;
         private readonly bool _newState;

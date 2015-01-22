@@ -28,7 +28,7 @@ namespace Epicycle.Input.Keyboard
         private int _positiveKeyId;
         private int _negativeKeyId;
         private BidirectionalMovementKeys<int> _bidirectionalMovementKeys;
-        private BidirectionalMovement? _keyEvent;
+        private BidirectionalMovementKeysEventArgs _keyEvent;
 
         [SetUp]
         public void SetUp()
@@ -42,7 +42,7 @@ namespace Epicycle.Input.Keyboard
 
             _bidirectionalMovementKeys = new BidirectionalMovementKeys<int>(_keyboardMock.Object, _positiveKeyId, _negativeKeyId);
 
-            _bidirectionalMovementKeys.OnStateChange += (sender, eventArgs) => _keyEvent = eventArgs;
+            _bidirectionalMovementKeys.OnDirectionChange += (sender, eventArgs) => _keyEvent = eventArgs;
         }
 
         private void PressPositiveKey()
@@ -82,14 +82,14 @@ namespace Epicycle.Input.Keyboard
 
         private void AssertEventAndReset(BidirectionalMovement expectedState)
         {
-            Assert.That(_keyEvent.HasValue, Is.True);
-            Assert.That(_keyEvent.Value, Is.EqualTo(expectedState));
+            Assert.That(_keyEvent, Is.Not.Null);
+            Assert.That(_keyEvent.NewDirection, Is.EqualTo(expectedState));
             ResetKeyEvent();
         }
 
         private void AssertNoEventAndReset()
         {
-            Assert.That(_keyEvent.HasValue, Is.False);
+            Assert.That(_keyEvent, Is.Null);
             ResetKeyEvent();
         }
 

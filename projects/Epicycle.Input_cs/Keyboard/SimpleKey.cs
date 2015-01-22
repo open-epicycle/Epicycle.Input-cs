@@ -35,7 +35,7 @@ namespace Epicycle.Input.Keyboard
             IsPressed = false;
         }
 
-        public event EventHandler<TKeyId> OnKeyPress;
+        public event EventHandler<SimpleKeyEventArgs<TKeyId>> OnKeyPress;
 
         public IKeyboard<TKeyId> Keyboard
         {
@@ -78,7 +78,7 @@ namespace Epicycle.Input.Keyboard
 
             if (shouldSendEvent && OnKeyPress != null)
             {
-                OnKeyPress(this, KeyId);
+                OnKeyPress(this, new SimpleKeyEventArgs<TKeyId>(KeyId));
             }
         }
     }

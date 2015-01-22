@@ -22,7 +22,7 @@ namespace Epicycle.Input.Keyboard
 {
     public interface ISimpleKey<TKeyId> : IKeyBasedInput<TKeyId>
     {
-        event EventHandler<TKeyId> OnKeyPress;
+        event EventHandler<SimpleKeyEventArgs<TKeyId>> OnKeyPress;
         bool IsPressed { get; }
     }
 }

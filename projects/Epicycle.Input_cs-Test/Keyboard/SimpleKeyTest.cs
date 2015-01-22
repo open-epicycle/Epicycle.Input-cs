@@ -27,7 +27,7 @@ namespace Epicycle.Input.Keyboard
         private Mock<IKeyboard<int>> _keyboardMock;
         private int _keyId;
         private SimpleKey<int> _key;
-        private int? _keyEvent;
+        private SimpleKeyEventArgs<int> _keyEvent;
 
         [SetUp]
         public void SetUp()
@@ -74,14 +74,14 @@ namespace Epicycle.Input.Keyboard
 
         private void AssertEventAndReset()
         {
-            Assert.That(_keyEvent.HasValue, Is.True);
-            Assert.That(_keyEvent.Value, Is.EqualTo(_keyId));
+            Assert.That(_keyEvent, Is.Not.Null);
+            Assert.That(_keyEvent.KeyId, Is.EqualTo(_keyId));
             ResetKeyEvent();
         }
 
         private void AssertNoEventAndReset()
         {
-            Assert.That(_keyEvent.HasValue, Is.False);
+            Assert.That(_keyEvent, Is.Null);
             ResetKeyEvent();
         }
 

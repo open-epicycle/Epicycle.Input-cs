@@ -16,9 +16,11 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Input-cs
 // ]]]]
 
+using System;
+
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class KeyEventArgs<TKeyId>
+    public sealed class KeyEventArgs<TKeyId> : EventArgs
     {
         private TKeyId _keyId;
         private KeyEventType _eventType;

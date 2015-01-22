@@ -20,9 +20,18 @@ using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class NoSuchKeyExcpetion : Exception
+    public sealed class BidirectionalMovementKeysEventArgs : EventArgs
     {
-        public NoSuchKeyExcpetion(string keyName)
-            : base(string.Format("The key {0} does not exist!", keyName)) { }
+        private readonly BidirectionalMovement _newDirection;
+
+        public BidirectionalMovementKeysEventArgs(BidirectionalMovement newDirection)
+        {
+            _newDirection = newDirection;
+        }
+
+        public BidirectionalMovement NewDirection
+        {
+            get { return _newDirection; }
+        }
     }
 }

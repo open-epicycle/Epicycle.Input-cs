@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="BidirectionalMovement.cs" />
     <Compile Include="Keyboard\BidirectionalMovementKeys.cs" />
+    <Compile Include="Keyboard\BidirectionalMovementKeysEventArgs.cs" />
     <Compile Include="Keyboard\IBidirectionalMovementKeys.cs" />
     <Compile Include="Keyboard\IKeyBasedInput.cs" />
     <Compile Include="Keyboard\IKeyboard.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Keyboard\KeyboardAdapter.cs" />
     <Compile Include="Keyboard\NoSuchKeyExcpetion.cs" />
     <Compile Include="Keyboard\SimpleKey.cs" />
+    <Compile Include="Keyboard\SimpleKeyEventArgs.cs" />
     <Compile Include="Keyboard\ToggleKey.cs" />
     <Compile Include="Keyboard\ToggleKeyEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

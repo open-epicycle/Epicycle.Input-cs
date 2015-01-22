@@ -37,7 +37,7 @@ namespace Epicycle.Input.Keyboard
             keyboard.OnKeyEvent += OnKeyEvent;
         }
 
-        public event EventHandler<BidirectionalMovement> OnStateChange;
+        public event EventHandler<BidirectionalMovementKeysEventArgs> OnDirectionChange;
 
         public IKeyboard<TKeyId> Keyboard
         {
@@ -96,9 +96,9 @@ namespace Epicycle.Input.Keyboard
             {
                 MovementDirection = newMovementDirection;
 
-                if (OnStateChange != null)
+                if (OnDirectionChange != null)
                 {
-                    OnStateChange(this, newMovementDirection);
+                    OnDirectionChange(this, new BidirectionalMovementKeysEventArgs(newMovementDirection));
                 }
             }
         }

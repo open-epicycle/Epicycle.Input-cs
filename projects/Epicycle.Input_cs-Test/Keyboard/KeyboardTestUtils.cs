@@ -20,7 +20,7 @@ using Moq;
 
 namespace Epicycle.Input.Keyboard
 {
-    public static class KeyboardTestUtils
+    internal static class KeyboardTestUtils
     {
         public static Mock<IKeyboard<int>> CreateKeyboardMock()
         {

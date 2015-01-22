@@ -22,7 +22,7 @@ namespace Epicycle.Input.Keyboard
 {
     public interface IBidirectionalMovementKeys<TKeyId> : IKeyboardBaseInput<TKeyId>
     {
-        event EventHandler<BidirectionalMovement> OnStateChange;
+        event EventHandler<BidirectionalMovementKeysEventArgs> OnDirectionChange;
 
         TKeyId PositiveDirectionKeyId { get; }
         TKeyId NegativeDirectionKeyId { get; }

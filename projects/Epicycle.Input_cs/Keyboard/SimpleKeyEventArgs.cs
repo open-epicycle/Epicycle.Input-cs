@@ -20,9 +20,18 @@ using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class NoSuchKeyExcpetion : Exception
+    public sealed class SimpleKeyEventArgs<TKeyId> : EventArgs
     {
-        public NoSuchKeyExcpetion(string keyName)
-            : base(string.Format("The key {0} does not exist!", keyName)) { }
+        private readonly TKeyId _keyId;
+
+        public SimpleKeyEventArgs(TKeyId keyId)
+        {
+            _keyId = keyId;
+        }
+
+        public TKeyId KeyId
+        {
+            get { return _keyId; }
+        }
     }
 }
