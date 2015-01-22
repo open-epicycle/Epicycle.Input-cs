@@ -21,12 +21,12 @@ namespace Epicycle.Input.Keyboard
     public sealed class KeyEventArgs<TKeyId>
     {
         private TKeyId _keyId;
-        private KeyState _newState;
+        private KeyEventType _eventType;
 
-        public KeyEventArgs(TKeyId keyId, KeyState newState)
+        public KeyEventArgs(TKeyId keyId, KeyEventType eventType)
         {
             _keyId = keyId;
-            _newState = newState;
+            _eventType = eventType;
         }
 
         public TKeyId KeyId
@@ -34,9 +34,9 @@ namespace Epicycle.Input.Keyboard
             get { return _keyId; }
         }
 
-        public KeyState NewState
+        public KeyEventType EventType
         {
-            get { return _newState; }
+            get { return _eventType; }
         }
     }
 }

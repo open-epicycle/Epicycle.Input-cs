@@ -18,7 +18,7 @@
 
 namespace Epicycle.Input.Keyboard
 {
-    public enum KeyState
+    public enum KeyEventType
     {
         Pressed,
         Released,

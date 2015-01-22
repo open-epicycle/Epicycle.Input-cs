@@ -58,7 +58,7 @@ namespace Epicycle.Input.Keyboard
 
         private void OnKeyEvent(object sender, KeyEventArgs<TKeyId> eventArgs)
         {
-            if(eventArgs.NewState == KeyState.Repeat)
+            if(eventArgs.EventType == KeyEventType.Repeat)
             {
                 return;
             }
@@ -70,16 +70,16 @@ namespace Epicycle.Input.Keyboard
                 return; // Ignore anything besides our two keys
             }
 
-            var newState = MovementDirection;
+            var newMovementDirection = MovementDirection;
 
-            if (eventArgs.NewState == KeyState.Pressed)
+            if (eventArgs.EventType == KeyEventType.Pressed)
             {
                 if (MovementDirection == BidirectionalMovement.Still)
                 {
-                    newState = isPositiveKey ? BidirectionalMovement.Positive : BidirectionalMovement.Negatize;
+                    newMovementDirection = isPositiveKey ? BidirectionalMovement.Positive : BidirectionalMovement.Negatize;
                 }
             }
-            else if (eventArgs.NewState == KeyState.Released)
+            else if (eventArgs.EventType == KeyEventType.Released)
             {
                 if (MovementDirection != BidirectionalMovement.Still)
                 {
@@ -87,18 +87,18 @@ namespace Epicycle.Input.Keyboard
 
                     if (isPositiveKey == isMovementForward)
                     {
-                        newState = BidirectionalMovement.Still; // Stop only if the correct direction key was pressed.
+                        newMovementDirection = BidirectionalMovement.Still; // Stop only if the correct direction key was pressed.
                     }
                 }
             }
 
-            if(MovementDirection != newState)
+            if (MovementDirection != newMovementDirection)
             {
-                MovementDirection = newState;
+                MovementDirection = newMovementDirection;
 
                 if (OnStateChange != null)
                 {
-                    OnStateChange(this, newState);
+                    OnStateChange(this, newMovementDirection);
                 }
             }
         }

@@ -44,22 +44,22 @@ namespace Epicycle.Input.Keyboard
 
         private void PressKey()
         {
-            _keyboardMock.SendKeyEvent(_keyId, KeyState.Pressed);
+            _keyboardMock.SendKeyEvent(_keyId, KeyEventType.Pressed);
         }
 
         private void RepeastKey()
         {
-            _keyboardMock.SendKeyEvent(_keyId, KeyState.Repeat);
+            _keyboardMock.SendKeyEvent(_keyId, KeyEventType.Repeat);
         }
 
         private void PressWrongKey()
         {
-            _keyboardMock.SendKeyEvent(200, KeyState.Pressed);
+            _keyboardMock.SendKeyEvent(200, KeyEventType.Pressed);
         }
 
         private void ReleaseKey()
         {
-            _keyboardMock.SendKeyEvent(_keyId, KeyState.Released);
+            _keyboardMock.SendKeyEvent(_keyId, KeyEventType.Released);
         }
 
         private void ResetKeyEvent()

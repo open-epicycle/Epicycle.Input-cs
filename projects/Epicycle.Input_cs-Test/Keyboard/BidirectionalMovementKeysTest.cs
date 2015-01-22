@@ -47,32 +47,32 @@ namespace Epicycle.Input.Keyboard
 
         private void PressPositiveKey()
         {
-            _keyboardMock.SendKeyEvent(_positiveKeyId, KeyState.Pressed);
+            _keyboardMock.SendKeyEvent(_positiveKeyId, KeyEventType.Pressed);
         }
 
         private void RepeatPositiveKey()
         {
-            _keyboardMock.SendKeyEvent(_positiveKeyId, KeyState.Repeat);
+            _keyboardMock.SendKeyEvent(_positiveKeyId, KeyEventType.Repeat);
         }
 
         private void PressNegativeKey()
         {
-            _keyboardMock.SendKeyEvent(_negativeKeyId, KeyState.Pressed);
+            _keyboardMock.SendKeyEvent(_negativeKeyId, KeyEventType.Pressed);
         }
 
         private void PressWrongKey()
         {
-            _keyboardMock.SendKeyEvent(2, KeyState.Pressed);
+            _keyboardMock.SendKeyEvent(2, KeyEventType.Pressed);
         }
 
         private void ReleasePositiveKey()
         {
-            _keyboardMock.SendKeyEvent(_positiveKeyId, KeyState.Released);
+            _keyboardMock.SendKeyEvent(_positiveKeyId, KeyEventType.Released);
         }
 
         private void ReleaseNegativeKey()
         {
-            _keyboardMock.SendKeyEvent(_negativeKeyId, KeyState.Released);
+            _keyboardMock.SendKeyEvent(_negativeKeyId, KeyEventType.Released);
         }
 
         private void ResetKeyEvent()

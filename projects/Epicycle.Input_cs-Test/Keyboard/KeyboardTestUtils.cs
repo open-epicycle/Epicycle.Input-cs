@@ -27,7 +27,7 @@ namespace Epicycle.Input.Keyboard
             return new Mock<IKeyboard<int>>(MockBehavior.Strict);
         }
 
-        public static void SendKeyEvent(this Mock<IKeyboard<int>> @this, int keyId, KeyState newState)
+        public static void SendKeyEvent(this Mock<IKeyboard<int>> @this, int keyId, KeyEventType newState)
         {
             @this.Raise(m => m.OnKeyEvent += null, @this.Object, new KeyEventArgs<int>(keyId, newState));
         }

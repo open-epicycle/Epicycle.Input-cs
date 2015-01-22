@@ -51,7 +51,7 @@ namespace Epicycle.Input.Keyboard
 
         private void OnKeyEvent(object sender, KeyEventArgs<TKeyId> eventArgs)
         {
-            if (eventArgs.NewState == KeyState.Repeat)
+            if (eventArgs.EventType == KeyEventType.Repeat)
             {
                 return;
             }
@@ -61,20 +61,20 @@ namespace Epicycle.Input.Keyboard
                 return; // Not our key
             }
 
-            var newState = IsPressed;
+            var newIsPressed = IsPressed;
 
-            if (eventArgs.NewState == KeyState.Pressed)
+            if (eventArgs.EventType == KeyEventType.Pressed)
             {
-                newState = true;
+                newIsPressed = true;
             }
-            else if (eventArgs.NewState == KeyState.Released)
+            else if (eventArgs.EventType == KeyEventType.Released)
             {
-                newState = false;
+                newIsPressed = false;
             }
 
-            var shouldSendEvent = !IsPressed && newState;
+            var shouldSendEvent = !IsPressed && newIsPressed;
 
-            IsPressed = newState;
+            IsPressed = newIsPressed;
 
             if (shouldSendEvent && OnKeyPress != null)
             {

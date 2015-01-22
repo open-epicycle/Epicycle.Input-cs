@@ -26,10 +26,10 @@ namespace Epicycle.Input.Keyboard
         [Test]
         public void ctor_sets_properties_correctly()
         {
-            var eventArgs = new KeyEventArgs<int>(123, KeyState.Released);
+            var eventArgs = new KeyEventArgs<int>(123, KeyEventType.Released);
 
             Assert.That(eventArgs.KeyId, Is.EqualTo(123));
-            Assert.That(eventArgs.NewState, Is.EqualTo(KeyState.Released));
+            Assert.That(eventArgs.EventType, Is.EqualTo(KeyEventType.Released));
         }
     }
 }

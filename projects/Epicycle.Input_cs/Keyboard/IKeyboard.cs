@@ -22,7 +22,7 @@ namespace Epicycle.Input.Keyboard
 {
     public interface IKeyboard<TKeyId>
     {
-        KeyState GetKeyState(TKeyId keyId);
+        KeyEventType GetKeyState(TKeyId keyId);
 
         event EventHandler<KeyEventArgs<TKeyId>> OnKeyEvent;
     }
