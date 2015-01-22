@@ -25,6 +25,7 @@ namespace Epicycle.Input.Keyboard
     public class ToggleKeyTest
     {
         private Mock<IKeyboard<int>> _keyboardMock;
+        private int _keyId;
         private ToggleKey<int> _key;
         private ToggleKeyEventArgs<int> _keyEvent;
 
@@ -35,14 +36,20 @@ namespace Epicycle.Input.Keyboard
 
             _keyboardMock = KeyboardTestUtils.CreateKeyboardMock();
 
-            _key = new ToggleKey<int>(_keyboardMock.Object, 123, true);
+            _keyId = 123;
+            _key = new ToggleKey<int>(_keyboardMock.Object, _keyId, true);
 
             _key.OnStateChange += (sender, eventArgs) => _keyEvent = eventArgs;
         }
 
         private void PressKey()
         {
-            _keyboardMock.SendKeyEvent(123, KeyState.Pressed);
+            _keyboardMock.SendKeyEvent(_keyId, KeyState.Pressed);
+        }
+
+        private void RepeastKey()
+        {
+            _keyboardMock.SendKeyEvent(_keyId, KeyState.Repeat);
         }
 
         private void PressWrongKey()
@@ -52,7 +59,7 @@ namespace Epicycle.Input.Keyboard
 
         private void ReleaseKey()
         {
-            _keyboardMock.SendKeyEvent(123, KeyState.Released);
+            _keyboardMock.SendKeyEvent(_keyId, KeyState.Released);
         }
 
         private void ResetKeyEvent()
@@ -63,7 +70,7 @@ namespace Epicycle.Input.Keyboard
         private void AssertEventAndReset(bool expectedState)
         {
             Assert.That(_keyEvent, Is.Not.Null);
-            Assert.That(_keyEvent.KeyId, Is.EqualTo(123));
+            Assert.That(_keyEvent.KeyId, Is.EqualTo(_keyId));
             Assert.That(_keyEvent.NewState, Is.EqualTo(expectedState));
             ResetKeyEvent();
         }
@@ -78,7 +85,7 @@ namespace Epicycle.Input.Keyboard
         public void ctor_sets_properties_correctly()
         {
             Assert.That(_key.Keyboard, Is.SameAs(_keyboardMock.Object));
-            Assert.That(_key.KeyId, Is.EqualTo(123));
+            Assert.That(_key.KeyId, Is.EqualTo(_keyId));
         }
 
         [Test]
@@ -120,6 +127,13 @@ namespace Epicycle.Input.Keyboard
         }
 
         [Test]
+        public void IsToggled_repeat_key_doesnt_affect_state()
+        {
+            RepeastKey();
+            Assert.That(_key.IsToggled, Is.True);
+        }
+
+        [Test]
         public void OnStateChange_key_press_sends_event()
         {
             PressKey();
@@ -139,6 +153,13 @@ namespace Epicycle.Input.Keyboard
         public void OnStateChange_wrong_key_pressed_doesnt_send_event()
         {
             PressWrongKey();
+            AssertNoEventAndReset();
+        }
+
+        [Test]
+        public void OnStateChange_repeat_key_doesnt_send_event()
+        {
+            RepeastKey();
             AssertNoEventAndReset();
         }
 

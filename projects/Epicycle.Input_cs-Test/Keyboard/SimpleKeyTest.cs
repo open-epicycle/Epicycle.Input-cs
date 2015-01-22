@@ -25,6 +25,7 @@ namespace Epicycle.Input.Keyboard
     public class SimpleKeyTest
     {
         private Mock<IKeyboard<int>> _keyboardMock;
+        private int _keyId;
         private SimpleKey<int> _key;
         private int? _keyEvent;
 
@@ -35,14 +36,20 @@ namespace Epicycle.Input.Keyboard
 
             _keyboardMock = KeyboardTestUtils.CreateKeyboardMock();
 
-            _key = new SimpleKey<int>(_keyboardMock.Object, 123);
+            _keyId = 123;
+            _key = new SimpleKey<int>(_keyboardMock.Object, _keyId);
 
             _key.OnKeyPress += (sender, keyId) => _keyEvent = keyId;
         }
 
         private void PressKey()
         {
-            _keyboardMock.SendKeyEvent(123, KeyState.Pressed);
+            _keyboardMock.SendKeyEvent(_keyId, KeyState.Pressed);
+        }
+
+        private void RepeastKey()
+        {
+            _keyboardMock.SendKeyEvent(_keyId, KeyState.Repeat);
         }
 
         private void PressWrongKey()
@@ -52,7 +59,7 @@ namespace Epicycle.Input.Keyboard
 
         private void ReleaseKey()
         {
-            _keyboardMock.SendKeyEvent(123, KeyState.Released);
+            _keyboardMock.SendKeyEvent(_keyId, KeyState.Released);
         }
 
         private void ReleaseWrongKey()
@@ -68,7 +75,7 @@ namespace Epicycle.Input.Keyboard
         private void AssertEventAndReset()
         {
             Assert.That(_keyEvent.HasValue, Is.True);
-            Assert.That(_keyEvent.Value, Is.EqualTo(123));
+            Assert.That(_keyEvent.Value, Is.EqualTo(_keyId));
             ResetKeyEvent();
         }
 
@@ -82,7 +89,7 @@ namespace Epicycle.Input.Keyboard
         public void ctor_sets_properties_correctly()
         {
             Assert.That(_key.Keyboard, Is.SameAs(_keyboardMock.Object));
-            Assert.That(_key.KeyId, Is.EqualTo(123));
+            Assert.That(_key.KeyId, Is.EqualTo(_keyId));
         }
 
         [Test]
@@ -102,6 +109,17 @@ namespace Epicycle.Input.Keyboard
         public void IsPressed_pressed_wrong_key_doesnt_affect()
         {
             PressWrongKey();
+            Assert.That(_key.IsPressed, Is.False);
+
+            PressKey();
+            ReleaseWrongKey();
+            Assert.That(_key.IsPressed, Is.True);
+        }
+
+        [Test]
+        public void IsPressed_repeat_key_doesnt_affect()
+        {
+            RepeastKey();
             Assert.That(_key.IsPressed, Is.False);
 
             PressKey();
@@ -143,6 +161,13 @@ namespace Epicycle.Input.Keyboard
         public void OnKeyPress_pressed_wrong_key_doesnt_send_event()
         {
             PressWrongKey();
+            AssertNoEventAndReset();
+        }
+
+        [Test]
+        public void OnKeyPress_repeat_key_doesnt_send_event()
+        {
+            RepeastKey();
             AssertNoEventAndReset();
         }
 

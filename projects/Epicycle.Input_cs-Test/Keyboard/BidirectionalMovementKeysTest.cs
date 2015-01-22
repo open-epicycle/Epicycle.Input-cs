@@ -25,6 +25,8 @@ namespace Epicycle.Input.Keyboard
     public class BidirectionalMovementKeysTest
     {
         private Mock<IKeyboard<int>> _keyboardMock;
+        private int _positiveKeyId;
+        private int _negativeKeyId;
         private BidirectionalMovementKeys<int> _bidirectionalMovementKeys;
         private BidirectionalMovement? _keyEvent;
 
@@ -35,19 +37,27 @@ namespace Epicycle.Input.Keyboard
 
             _keyboardMock = KeyboardTestUtils.CreateKeyboardMock();
 
-            _bidirectionalMovementKeys = new BidirectionalMovementKeys<int>(_keyboardMock.Object, 123, 234);
+            _positiveKeyId = 123;
+            _negativeKeyId = 234;
+
+            _bidirectionalMovementKeys = new BidirectionalMovementKeys<int>(_keyboardMock.Object, _positiveKeyId, _negativeKeyId);
 
             _bidirectionalMovementKeys.OnStateChange += (sender, eventArgs) => _keyEvent = eventArgs;
         }
 
         private void PressPositiveKey()
         {
-            _keyboardMock.SendKeyEvent(123, KeyState.Pressed);
+            _keyboardMock.SendKeyEvent(_positiveKeyId, KeyState.Pressed);
+        }
+
+        private void RepeatPositiveKey()
+        {
+            _keyboardMock.SendKeyEvent(_positiveKeyId, KeyState.Repeat);
         }
 
         private void PressNegativeKey()
         {
-            _keyboardMock.SendKeyEvent(234, KeyState.Pressed);
+            _keyboardMock.SendKeyEvent(_negativeKeyId, KeyState.Pressed);
         }
 
         private void PressWrongKey()
@@ -57,12 +67,12 @@ namespace Epicycle.Input.Keyboard
 
         private void ReleasePositiveKey()
         {
-            _keyboardMock.SendKeyEvent(123, KeyState.Released);
+            _keyboardMock.SendKeyEvent(_positiveKeyId, KeyState.Released);
         }
 
         private void ReleaseNegativeKey()
         {
-            _keyboardMock.SendKeyEvent(234, KeyState.Released);
+            _keyboardMock.SendKeyEvent(_negativeKeyId, KeyState.Released);
         }
 
         private void ResetKeyEvent()
@@ -87,13 +97,27 @@ namespace Epicycle.Input.Keyboard
         public void ctor_sets_properties_correctly()
         {
             Assert.That(_bidirectionalMovementKeys.Keyboard, Is.SameAs(_keyboardMock.Object));
-            Assert.That(_bidirectionalMovementKeys.PositiveDirectionKeyId, Is.EqualTo(123));
-            Assert.That(_bidirectionalMovementKeys.NegativeDirectionKeyId, Is.EqualTo(234));
+            Assert.That(_bidirectionalMovementKeys.PositiveDirectionKeyId, Is.EqualTo(_positiveKeyId));
+            Assert.That(_bidirectionalMovementKeys.NegativeDirectionKeyId, Is.EqualTo(_negativeKeyId));
         }
 
         [Test]
         public void MovementDirection_still_upon_construction()
         {
+            Assert.That(_bidirectionalMovementKeys.MovementDirection, Is.EqualTo(BidirectionalMovement.Still));
+        }
+
+        [Test]
+        public void MovementDirection_pressing_wrong_key_doesnt_change_state()
+        {
+            PressWrongKey();
+            Assert.That(_bidirectionalMovementKeys.MovementDirection, Is.EqualTo(BidirectionalMovement.Still));
+        }
+
+        [Test]
+        public void MovementDirection_repeating_positive_key_doesnt_change_state()
+        {
+            RepeatPositiveKey();
             Assert.That(_bidirectionalMovementKeys.MovementDirection, Is.EqualTo(BidirectionalMovement.Still));
         }
 
@@ -135,7 +159,19 @@ namespace Epicycle.Input.Keyboard
             Assert.That(_bidirectionalMovementKeys.MovementDirection, Is.EqualTo(BidirectionalMovement.Positive));
         }
 
-        ////
+        [Test]
+        public void OnStateChange_pressing_wrong_key_doesnt_raise_event()
+        {
+            PressWrongKey();
+            AssertNoEventAndReset();
+        }
+
+        [Test]
+        public void OnStateChange_repeating_positive_key_doesnt_raise_event()
+        {
+            RepeatPositiveKey();
+            AssertNoEventAndReset();
+        }
 
         [Test]
         public void OnStateChange_posotive_key_press_sends_positive_state()
