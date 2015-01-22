@@ -1,9 +1,9 @@
 title: Epicycle.Input (.NET)
 url: https://github.com/open-epicycle/Epicycle.Geodesy-cs
-summary: "Epicycle .NET input library."
+summary: "Epicycle .NET input library. Includes: keyboard abstraction and keyboard state machines, sensor abstraction, sensor simulation and recording play-back"
 
 organization: Epicycle
-tags: epicycle lib library input sensor sensors simulation playback
+tags: epicycle lib library input keyboard sensor sensors simulation playback
 copyright: Copyright 2015 Epicycle
 license_url: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -20,7 +20,7 @@ nuget_dependencies:
  - Epicycle.Geodesy-cs.0.1.0.0
 
 description: |
-   Epicycle .NET input library.
+   Epicycle .NET input library. Includes: keyboard abstraction and keyboard state machines, sensor abstraction, sensor simulation and recording play-back
    
    * Details & release notes: https://github.com/open-epicycle/Epicycle.Input-cs/blob/ver-$version$/README.md
    * Sources: https://github.com/open-epicycle/Epicycle.Input-cs/tree/ver-$version$
