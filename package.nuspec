@@ -9,16 +9,16 @@
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <projectUrl>https://github.com/open-epicycle/Epicycle.Geodesy-cs</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Epicycle .NET input library.
+    <description>Epicycle .NET input library. Includes: keyboard abstraction and keyboard state machines, sensor abstraction, sensor simulation and recording play-back
 
 * Details &amp; release notes: https://github.com/open-epicycle/Epicycle.Input-cs/blob/ver-$version$/README.md
 * Sources: https://github.com/open-epicycle/Epicycle.Input-cs/tree/ver-$version$
 * Git repository: https://github.com/open-epicycle/Epicycle.Input-cs</description>
-    <summary>Epicycle .NET input library.</summary>
+    <summary>Epicycle .NET input library. Includes: keyboard abstraction and keyboard state machines, sensor abstraction, sensor simulation and recording play-back</summary>
     <releaseNotes>https://github.com/open-epicycle/Epicycle.Input-cs/blob/ver-$version$/README.md</releaseNotes>
     <copyright>Copyright 2015 Epicycle</copyright>
     <language />
-    <tags>epicycle lib library input sensor sensors simulation playback</tags>
+    <tags>epicycle lib library input keyboard sensor sensors simulation playback</tags>
 
     <dependencies>
       <dependency id="Epicycle.Commons-cs" version="0.1.6.0" />
