@@ -35,6 +35,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.1** [IN DEVELOPMENT]
+  * Upgrading Epicycle.Math-cs: 0.1.3.0 => 0.1.4.0
 
 * **Version 0.1.0** [2015-01-25]
   * Moving the sensor infrastructure from Epicycle.Physics-cs
