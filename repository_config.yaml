@@ -16,8 +16,8 @@ dotnet_frameworks:
 
 nuget_dependencies:
  - Epicycle.Commons-cs.0.1.6.0
- - Epicycle.Math-cs.0.1.4.0
- - Epicycle.Geodesy-cs.0.1.0.0
+ - Epicycle.Math-cs.0.1.5.0
+ - Epicycle.Geodesy-cs.0.1.3.0
 
 description: |
    Epicycle .NET input library. Includes: keyboard abstraction and keyboard state machines, sensor abstraction, sensor simulation and recording play-back
