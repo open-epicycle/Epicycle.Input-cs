@@ -35,7 +35,10 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ### Version 0.1 
 
 * **Version 0.1.3** [IN DEVELOPMENT]
-
+  * Upgrading to Epicycle.Commons-cs.0.1.8.0
+  * Upgrading to Epicycle.Math-cs.0.1.6.0
+  * Upgrading to Epicycle.Geodesy-cs.0.1.4.0
+ 
 * **Version 0.1.2** [2015-01-28]
   * Upgrading Epicycle.Math-cs: 0.1.4.0 => 0.1.5.0
   * Upgrading Epicycle.Geodesy-cs: 0.1.0.0 => 0.1.3.0

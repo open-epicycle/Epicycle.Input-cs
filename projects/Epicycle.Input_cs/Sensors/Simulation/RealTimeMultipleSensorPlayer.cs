@@ -16,7 +16,7 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Input-cs
 // ]]]]
 
-using Epicycle.Commons;
+using Epicycle.Commons.Threading;
 using Epicycle.Commons.Time;
 
 namespace Epicycle.Input.Sensors.Simulation
