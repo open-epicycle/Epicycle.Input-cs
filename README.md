@@ -28,6 +28,8 @@ Epicycle .NET input library. Includes: keyboard abstraction and keyboard state m
   * Geo-location based sensor abstraction
 * **Epicycle.Input.Sensors.Simulation**
   * Sensor simulation and recrding playback (both real-time and not)
+* **Epicycle.Indicators**
+  * Indicators are devices that can present a variable
 
 ## License
 Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
@@ -40,7 +42,8 @@ Copyright 2015 Epicycle (http://epicycle.org)
   * Keyboard:
     * Key events can now contain additional metadata
     * Some typos fixes, small API changes and more unit tests
-  * Added a primitive controller infrastructre
+  * Added a primitive Controllers infrastructre
+  * Added a primitive Indicators infrastructre
   * Upgrading to Epicycle.Commons-cs.0.1.8.0
   * Upgrading to Epicycle.Math-cs.0.1.6.0
   * Upgrading to Epicycle.Geodesy-cs.0.1.4.0
