@@ -24,9 +24,9 @@ namespace Epicycle.Input.Keyboard
     [TestFixture]
     public class ToggleKeyTest
     {
-        private Mock<IKeyboard<int>> _keyboardMock;
+        private Mock<IKeyboard<int, int>> _keyboardMock;
         private int _keyId;
-        private ToggleKey<int> _key;
+        private ToggleKey<int, int> _key;
         private ToggleKeyEventArgs<int> _keyEvent;
 
         [SetUp]
@@ -37,7 +37,7 @@ namespace Epicycle.Input.Keyboard
             _keyboardMock = KeyboardTestUtils.CreateKeyboardMock();
 
             _keyId = 123;
-            _key = new ToggleKey<int>(_keyboardMock.Object, _keyId, true);
+            _key = new ToggleKey<int, int>(_keyboardMock.Object, _keyId, true);
 
             _key.OnStateChange += (sender, eventArgs) => _keyEvent = eventArgs;
         }

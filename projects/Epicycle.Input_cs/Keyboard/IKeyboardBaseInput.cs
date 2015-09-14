@@ -18,8 +18,8 @@
 
 namespace Epicycle.Input.Keyboard
 {
-    public interface IKeyboardBaseInput<TKeyId>
+    public interface IKeyboardBaseInput<TKeyId, TAdditionalKeyEventData>
     {
-        IKeyboard<TKeyId> Keyboard { get; }
+        IKeyboard<TKeyId, TAdditionalKeyEventData> Keyboard { get; }
     }
 }

@@ -20,12 +20,12 @@ using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class SimpleKey<TKeyId> : ISimpleKey<TKeyId>
+    public sealed class SimpleKey<TKeyId, TAdditionalKeyEventData> : ISimpleKey<TKeyId, TAdditionalKeyEventData>
     {
-        public readonly IKeyboard<TKeyId> _keyboard;
+        public readonly IKeyboard<TKeyId, TAdditionalKeyEventData> _keyboard;
         public readonly TKeyId _keyId;
 
-        public SimpleKey(IKeyboard<TKeyId> keyboard, TKeyId keyId)
+        public SimpleKey(IKeyboard<TKeyId, TAdditionalKeyEventData> keyboard, TKeyId keyId)
         {
             _keyboard = keyboard;
             _keyId = keyId;
@@ -37,7 +37,7 @@ namespace Epicycle.Input.Keyboard
 
         public event EventHandler<SimpleKeyEventArgs<TKeyId>> OnKeyPress;
 
-        public IKeyboard<TKeyId> Keyboard
+        public IKeyboard<TKeyId, TAdditionalKeyEventData> Keyboard
         {
             get { return _keyboard; }
         }
@@ -49,7 +49,7 @@ namespace Epicycle.Input.Keyboard
 
         public bool IsPressed { get; private set; }
 
-        private void OnKeyEvent(object sender, KeyEventArgs<TKeyId> eventArgs)
+        private void OnKeyEvent(object sender, KeyEventArgs<TKeyId, TAdditionalKeyEventData> eventArgs)
         {
             if (eventArgs.EventType == KeyEventType.Repeat)
             {

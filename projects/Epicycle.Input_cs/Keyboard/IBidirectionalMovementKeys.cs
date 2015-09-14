@@ -20,7 +20,7 @@ using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    public interface IBidirectionalMovementKeys<TKeyId> : IKeyboardBaseInput<TKeyId>
+    public interface IBidirectionalMovementKeys<TKeyId, TAdditionalKeyEventData> : IKeyboardBaseInput<TKeyId, TAdditionalKeyEventData>
     {
         event EventHandler<BidirectionalMovementKeysEventArgs> OnDirectionChange;
 

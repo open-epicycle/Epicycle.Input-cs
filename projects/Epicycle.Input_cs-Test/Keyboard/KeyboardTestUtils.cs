@@ -22,17 +22,17 @@ namespace Epicycle.Input.Keyboard
 {
     internal static class KeyboardTestUtils
     {
-        public static Mock<IKeyboard<int>> CreateKeyboardMock()
+        public static Mock<IKeyboard<int, int>> CreateKeyboardMock()
         {
-            return new Mock<IKeyboard<int>>(MockBehavior.Strict);
+            return new Mock<IKeyboard<int, int>>(MockBehavior.Strict);
         }
 
-        public static void SendKeyEvent(this Mock<IKeyboard<int>> @this, int keyId, KeyEventType eventType)
+        public static void SendKeyEvent(this Mock<IKeyboard<int, int>> @this, int keyId, KeyEventType eventType)
         {
-            @this.Raise(m => m.OnKeyEvent += null, @this.Object, new KeyEventArgs<int>(keyId, eventType));
+            @this.Raise(m => m.OnKeyEvent += null, @this.Object, new KeyEventArgs<int, int>(keyId, eventType, 234));
         }
 
-        public static void SetKeyState(this Mock<IKeyboard<int>> @this, int keyId, KeyEventType state)
+        public static void SetKeyState(this Mock<IKeyboard<int, int>> @this, int keyId, KeyEventType state)
         {
             @this.Setup(m => m.GetKeyState(keyId)).Returns(state);
         }

@@ -21,13 +21,13 @@ using System.Collections.Generic;
 
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class KeyboardAdapter<TKeyId, TSourceKeyId> : IKeyboardAdapter<TKeyId, TSourceKeyId>
+    public sealed class KeyboardAdapter<TKeyId, TSourceKeyId, TAdditionalKeyEventData> : IKeyboardAdapter<TKeyId, TSourceKeyId, TAdditionalKeyEventData>
     {
-        private readonly IKeyboard<TSourceKeyId> _sourceKeyboard;
+        private readonly IKeyboard<TSourceKeyId, TAdditionalKeyEventData> _sourceKeyboard;
         private readonly Dictionary<TSourceKeyId, TKeyId> _sourceToThisKeyMapping;
         private readonly Dictionary<TKeyId, TSourceKeyId> _thisToSourceKeyMapping;
 
-        public KeyboardAdapter(IKeyboard<TSourceKeyId> sourceKeyboard)
+        public KeyboardAdapter(IKeyboard<TSourceKeyId, TAdditionalKeyEventData> sourceKeyboard)
         {
             _sourceKeyboard = sourceKeyboard;
 
@@ -37,9 +37,9 @@ namespace Epicycle.Input.Keyboard
             _sourceKeyboard.OnKeyEvent += OnSourceKeyEvent;
         }
 
-        public event EventHandler<KeyEventArgs<TKeyId>> OnKeyEvent;
+        public event EventHandler<KeyEventArgs<TKeyId, TAdditionalKeyEventData>> OnKeyEvent;
 
-        public IKeyboard<TSourceKeyId> SourceKeyboard
+        public IKeyboard<TSourceKeyId, TAdditionalKeyEventData> SourceKeyboard
         {
             get { return _sourceKeyboard; }
         }
@@ -95,13 +95,13 @@ namespace Epicycle.Input.Keyboard
             return _thisToSourceKeyMapping[keyId];
         }
 
-        private void OnSourceKeyEvent(object sender, KeyEventArgs<TSourceKeyId> eventArgs)
+        private void OnSourceKeyEvent(object sender, KeyEventArgs<TSourceKeyId, TAdditionalKeyEventData> eventArgs)
         {
             if (OnKeyEvent != null && IsSourceKeyMapped(eventArgs.KeyId))
             {
                 var keyId = ToThisKeyId(eventArgs.KeyId);
 
-                OnKeyEvent(this, new KeyEventArgs<TKeyId>(keyId, eventArgs.EventType));
+                OnKeyEvent(this, new KeyEventArgs<TKeyId, TAdditionalKeyEventData>(keyId, eventArgs.EventType, eventArgs.AdditionalData));
             }
         }
     }

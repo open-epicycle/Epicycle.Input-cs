@@ -25,9 +25,9 @@ namespace Epicycle.Input.Keyboard
     [TestFixture]
     public class KeyboardAdapterTest
     {
-        private Mock<IKeyboard<int>> _sourceKeyboardMock;
-        private KeyboardAdapter<string, int> _keyboardAdapter;
-        private KeyEventArgs<string> _keyEvent;
+        private Mock<IKeyboard<int, int>> _sourceKeyboardMock;
+        private KeyboardAdapter<string, int, int> _keyboardAdapter;
+        private KeyEventArgs<string, int> _keyEvent;
 
         [SetUp]
         public void SetUp()
@@ -35,7 +35,7 @@ namespace Epicycle.Input.Keyboard
             ResetKeyEvent();
 
             _sourceKeyboardMock = KeyboardTestUtils.CreateKeyboardMock();
-            _keyboardAdapter = new KeyboardAdapter<string, int>(_sourceKeyboardMock.Object);
+            _keyboardAdapter = new KeyboardAdapter<string, int, int>(_sourceKeyboardMock.Object);
 
             _keyboardAdapter.MapKey("a", 10);
             _keyboardAdapter.MapKey("b", 20);

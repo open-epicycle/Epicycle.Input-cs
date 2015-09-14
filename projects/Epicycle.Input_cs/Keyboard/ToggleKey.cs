@@ -20,13 +20,13 @@ using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class ToggleKey<TKeyId> : IToggleKey<TKeyId>
+    public sealed class ToggleKey<TKeyId, TAdditionalKeyEventData> : IToggleKey<TKeyId, TAdditionalKeyEventData>
     {
-        private readonly SimpleKey<TKeyId> _key;
+        private readonly SimpleKey<TKeyId, TAdditionalKeyEventData> _key;
 
-        public ToggleKey(IKeyboard<TKeyId> keyboard, TKeyId keyId, bool initialState=false)
+        public ToggleKey(IKeyboard<TKeyId, TAdditionalKeyEventData> keyboard, TKeyId keyId, bool initialState = false)
         {
-            _key = new SimpleKey<TKeyId>(keyboard, keyId);
+            _key = new SimpleKey<TKeyId, TAdditionalKeyEventData>(keyboard, keyId);
 
             IsToggled = initialState;
 
@@ -43,7 +43,7 @@ namespace Epicycle.Input.Keyboard
             }
         }
 
-        public IKeyboard<TKeyId> Keyboard
+        public IKeyboard<TKeyId, TAdditionalKeyEventData> Keyboard
         {
             get { return _key.Keyboard; }
         }

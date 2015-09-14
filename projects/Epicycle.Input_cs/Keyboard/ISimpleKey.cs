@@ -20,7 +20,7 @@ using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    public interface ISimpleKey<TKeyId> : IKeyBasedInput<TKeyId>
+    public interface ISimpleKey<TKeyId, TAdditionalKeyEventData> : IKeyBasedInput<TKeyId, TAdditionalKeyEventData>
     {
         event EventHandler<SimpleKeyEventArgs<TKeyId>> OnKeyPress;
         bool IsPressed { get; }

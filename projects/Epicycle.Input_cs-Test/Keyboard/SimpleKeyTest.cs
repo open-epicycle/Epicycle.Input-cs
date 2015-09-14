@@ -24,9 +24,9 @@ namespace Epicycle.Input.Keyboard
     [TestFixture]
     public class SimpleKeyTest
     {
-        private Mock<IKeyboard<int>> _keyboardMock;
+        private Mock<IKeyboard<int, int>> _keyboardMock;
         private int _keyId;
-        private SimpleKey<int> _key;
+        private SimpleKey<int, int> _key;
         private SimpleKeyEventArgs<int> _keyEvent;
 
         [SetUp]
@@ -37,7 +37,7 @@ namespace Epicycle.Input.Keyboard
             _keyboardMock = KeyboardTestUtils.CreateKeyboardMock();
 
             _keyId = 123;
-            _key = new SimpleKey<int>(_keyboardMock.Object, _keyId);
+            _key = new SimpleKey<int, int>(_keyboardMock.Object, _keyId);
 
             _key.OnKeyPress += (sender, keyId) => _keyEvent = keyId;
         }

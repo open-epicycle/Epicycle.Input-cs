@@ -20,10 +20,10 @@ using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    public interface IKeyboard<TKeyId>
+    public interface IKeyboard<TKeyId, TAdditionalKeyEventData>
     {
         KeyEventType GetKeyState(TKeyId keyId);
 
-        event EventHandler<KeyEventArgs<TKeyId>> OnKeyEvent;
+        event EventHandler<KeyEventArgs<TKeyId, TAdditionalKeyEventData>> OnKeyEvent;
     }
 }

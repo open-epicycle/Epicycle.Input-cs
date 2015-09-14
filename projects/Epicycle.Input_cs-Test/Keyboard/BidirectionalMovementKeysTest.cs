@@ -24,10 +24,10 @@ namespace Epicycle.Input.Keyboard
     [TestFixture]
     public class BidirectionalMovementKeysTest
     {
-        private Mock<IKeyboard<int>> _keyboardMock;
+        private Mock<IKeyboard<int, int>> _keyboardMock;
         private int _positiveKeyId;
         private int _negativeKeyId;
-        private BidirectionalMovementKeys<int> _bidirectionalMovementKeys;
+        private BidirectionalMovementKeys<int, int> _bidirectionalMovementKeys;
         private BidirectionalMovementKeysEventArgs _keyEvent;
 
         [SetUp]
@@ -40,7 +40,7 @@ namespace Epicycle.Input.Keyboard
             _positiveKeyId = 123;
             _negativeKeyId = 234;
 
-            _bidirectionalMovementKeys = new BidirectionalMovementKeys<int>(_keyboardMock.Object, _positiveKeyId, _negativeKeyId);
+            _bidirectionalMovementKeys = new BidirectionalMovementKeys<int, int>(_keyboardMock.Object, _positiveKeyId, _negativeKeyId);
 
             _bidirectionalMovementKeys.OnDirectionChange += (sender, eventArgs) => _keyEvent = eventArgs;
         }
