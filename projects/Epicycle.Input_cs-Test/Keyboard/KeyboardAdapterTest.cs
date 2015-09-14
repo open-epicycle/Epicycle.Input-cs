@@ -86,15 +86,15 @@ namespace Epicycle.Input.Keyboard
         [Test]
         public void GetKeyState_retuns_source_state()
         {
-            _sourceKeyboardMock.SetKeyState(20, KeyEventType.Pressed);
-            Assert.That(_keyboardAdapter.GetKeyState("b"), Is.EqualTo(KeyEventType.Pressed));
+            _sourceKeyboardMock.SetKeyState(20, KeyState.Pressed);
+            Assert.That(_keyboardAdapter.GetKeyState("b"), Is.EqualTo(KeyState.Pressed));
         }
 
         [Test]
         [ExpectedException(typeof(NoSuchKeyExcpetion))]
         public void GetKeyState_non_mapped_key_throws_exception()
         {
-            _sourceKeyboardMock.SetKeyState(20, KeyEventType.Pressed);
+            _sourceKeyboardMock.SetKeyState(20, KeyState.Pressed);
             _keyboardAdapter.GetKeyState("x");
         }
 

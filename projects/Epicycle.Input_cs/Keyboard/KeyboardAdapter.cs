@@ -60,7 +60,7 @@ namespace Epicycle.Input.Keyboard
             _thisToSourceKeyMapping[keyId] = sourceKeyId;
         }
 
-        public KeyEventType GetKeyState(TKeyId keyId)
+        public KeyState GetKeyState(TKeyId keyId)
         {
             return _sourceKeyboard.GetKeyState(ToSourceKeyId(keyId));
         }

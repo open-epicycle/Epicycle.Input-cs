@@ -32,7 +32,7 @@ namespace Epicycle.Input.Keyboard
             @this.Raise(m => m.OnKeyEvent += null, @this.Object, new KeyEventArgs<int, int>(keyId, eventType, 234));
         }
 
-        public static void SetKeyState(this Mock<IKeyboard<int, int>> @this, int keyId, KeyEventType state)
+        public static void SetKeyState(this Mock<IKeyboard<int, int>> @this, int keyId, KeyState state)
         {
             @this.Setup(m => m.GetKeyState(keyId)).Returns(state);
         }
