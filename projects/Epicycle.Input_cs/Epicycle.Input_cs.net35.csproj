@@ -96,6 +96,7 @@
     <Compile Include="Sensors\Simulation\PassiveMultipleSensorPlayer.cs" />
     <Compile Include="Sensors\Simulation\PassiveSensorPlayer.cs" />
     <Compile Include="Sensors\Simulation\RealTimeMultipleSensorPlayer.cs" />
+    <Compile Include="Unit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
