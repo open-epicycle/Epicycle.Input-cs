@@ -14,6 +14,8 @@ Epicycle .NET input library. Includes: keyboard abstraction and keyboard state m
 ## Namespaces
 * **Epicycle.Input**
   * General classes, enums and interfaces
+* **Epicycle.Controllers**
+  * Controllers are input devices that control a variable
 * **Epicycle.Input.Keyboard**
   * Keyboard abstraction
   * Contains state machines for:
@@ -38,6 +40,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
   * Keyboard:
     * Key events can now contain additional metadata
     * Some typos fixes, small API changes and more unit tests
+  * Added a primitive controller infrastructre
   * Upgrading to Epicycle.Commons-cs.0.1.8.0
   * Upgrading to Epicycle.Math-cs.0.1.6.0
   * Upgrading to Epicycle.Geodesy-cs.0.1.4.0

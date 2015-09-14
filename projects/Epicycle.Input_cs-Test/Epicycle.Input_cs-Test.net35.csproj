@@ -71,6 +71,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ControllerChangeEventArgsTest.cs" />
     <Compile Include="Keyboard\BidirectionalMovementKeysTest.cs" />
     <Compile Include="Keyboard\KeyEventArgsBaseTest.cs" />
     <Compile Include="Keyboard\KeyEventArgsTest.cs" />
