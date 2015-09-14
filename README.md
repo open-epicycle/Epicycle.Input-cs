@@ -1,4 +1,4 @@
-# Epicycle.Input-cs 0.1.3.0 [IN DEVELOPMENT]
+# Epicycle.Input-cs 0.1.3.0
 Epicycle .NET input library. Includes: keyboard abstraction and keyboard state machines, sensor abstraction, sensor simulation and recording play-back
 
 ***Note***: *This library is in it's 0.X version, that means that it's still in active development and backward compatibility is not guaranteed!*
@@ -38,7 +38,7 @@ Copyright 2015 Epicycle (http://epicycle.org)
 ## Release Notes
 ### Version 0.1 
 
-* **Version 0.1.3** [IN DEVELOPMENT]
+* **Version 0.1.3** [2015-09-14]
   * Keyboard:
     * Key events can now contain additional metadata
     * Some typos fixes, small API changes and more unit tests
