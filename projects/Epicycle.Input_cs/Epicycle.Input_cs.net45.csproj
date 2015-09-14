@@ -68,6 +68,7 @@
     <Compile Include="BidirectionalMovement.cs" />
     <Compile Include="Controllers\ControllerChangeEventArgs.cs" />
     <Compile Include="Controllers\IControllerBoard.cs" />
+    <Compile Include="Indicators\IIndicatorBoard.cs" />
     <Compile Include="Keyboard\BidirectionalMovementKeys.cs" />
     <Compile Include="Keyboard\BidirectionalMovementKeysEventArgs.cs" />
     <Compile Include="Keyboard\IBidirectionalMovementKeys.cs" />
