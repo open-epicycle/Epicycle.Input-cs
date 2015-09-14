@@ -18,7 +18,7 @@
 
 namespace Epicycle.Input.Keyboard
 {
-    public interface IKeyboardBaseInput<TKeyId, TAdditionalKeyEventData>
+    public interface IKeyboardBasedInput<TKeyId, TAdditionalKeyEventData>
     {
         IKeyboard<TKeyId, TAdditionalKeyEventData> Keyboard { get; }
     }
