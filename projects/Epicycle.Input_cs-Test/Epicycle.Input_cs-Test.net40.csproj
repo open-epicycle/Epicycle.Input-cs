@@ -72,9 +72,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Keyboard\BidirectionalMovementKeysTest.cs" />
+    <Compile Include="Keyboard\KeyEventArgsBaseTest.cs" />
     <Compile Include="Keyboard\KeyEventArgsTest.cs" />
     <Compile Include="Keyboard\KeyboardAdapterTest.cs" />
     <Compile Include="Keyboard\KeyboardTestUtils.cs" />
+    <Compile Include="Keyboard\SimpleKeyEventArgsTest.cs" />
     <Compile Include="Keyboard\SimpleKeyTest.cs" />
     <Compile Include="Keyboard\ToggleKeyEventArgsTest.cs" />
     <Compile Include="Keyboard\ToggleKeyTest.cs" />

@@ -20,16 +20,19 @@ using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class ToggleKeyEventArgs<TKeyId, TAdditionalKeyEventData> : KeyEventArgsBase<TKeyId, TAdditionalKeyEventData>
+    public abstract class KeyEventArgsBase<TKeyId, TAdditionalKeyEventData> : EventArgs
     {
-        private readonly bool _newState;
+        private readonly TKeyId _keyId;
+        private readonly TAdditionalKeyEventData _additionalData;
 
-        public ToggleKeyEventArgs(TKeyId keyId, bool newState, TAdditionalKeyEventData additionalData)
-            : base(keyId, additionalData)
+        public KeyEventArgsBase(TKeyId keyId, TAdditionalKeyEventData additionalData)
         {
-            _newState = newState;
+            _keyId = keyId;
+            _additionalData = additionalData;
         }
 
-        public bool NewState { get { return _newState; } }
+        public TKeyId KeyId { get { return _keyId; } }
+
+        public TAdditionalKeyEventData AdditionalData { get { return _additionalData; } }
     }
 }

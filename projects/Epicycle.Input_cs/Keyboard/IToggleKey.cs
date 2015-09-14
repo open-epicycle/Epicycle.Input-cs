@@ -22,7 +22,7 @@ namespace Epicycle.Input.Keyboard
 {
     public interface IToggleKey<TKeyId, TAdditionalKeyEventData> : IKeyBasedInput<TKeyId, TAdditionalKeyEventData>
     {
-        event EventHandler<ToggleKeyEventArgs<TKeyId>> OnStateChange;
+        event EventHandler<ToggleKeyEventArgs<TKeyId, TAdditionalKeyEventData>> OnStateChange;
         bool IsToggled { get; }
     }
 }

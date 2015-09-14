@@ -16,20 +16,26 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Input-cs
 // ]]]]
 
-using System;
+using NUnit.Framework;
 
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class ToggleKeyEventArgs<TKeyId, TAdditionalKeyEventData> : KeyEventArgsBase<TKeyId, TAdditionalKeyEventData>
+    [TestFixture]
+    public class KeyEventArgsBaseTest
     {
-        private readonly bool _newState;
-
-        public ToggleKeyEventArgs(TKeyId keyId, bool newState, TAdditionalKeyEventData additionalData)
-            : base(keyId, additionalData)
+        [Test]
+        public void ctor_sets_properties_correctly()
         {
-            _newState = newState;
+            var eventArgs = new TestKeyEventArgsBase<int, int>(123, 234);
+
+            Assert.That(eventArgs.KeyId, Is.EqualTo(123));
+            Assert.That(eventArgs.AdditionalData, Is.EqualTo(234));
         }
 
-        public bool NewState { get { return _newState; } }
+        private class TestKeyEventArgsBase<TKeyId, TAdditionalKeyEventData> : KeyEventArgsBase<TKeyId, TAdditionalKeyEventData>
+        {
+            public TestKeyEventArgsBase(TKeyId keyId, TAdditionalKeyEventData additionalData)
+                : base(keyId, additionalData) { }
+        }
     }
 }
