@@ -20,13 +20,13 @@ using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    public sealed class BidirectionalMovementKeys<TKeyId> : IBidirectionalMovementKeys<TKeyId>
+    public sealed class BidirectionalMovementKeys<TKeyId, TAdditionalKeyEventData> : IBidirectionalMovementKeys<TKeyId, TAdditionalKeyEventData>
     {
-        private readonly IKeyboard<TKeyId> _keyboard;
+        private readonly IKeyboard<TKeyId, TAdditionalKeyEventData> _keyboard;
         private readonly TKeyId _positiveDirectionKeyId;
         private readonly TKeyId _negativeDirectionKeyId;
 
-        public BidirectionalMovementKeys(IKeyboard<TKeyId> keyboard, TKeyId positiveDirectionKeyId, TKeyId negativeDirectionKeyId)
+        public BidirectionalMovementKeys(IKeyboard<TKeyId, TAdditionalKeyEventData> keyboard, TKeyId positiveDirectionKeyId, TKeyId negativeDirectionKeyId)
         {
             _keyboard = keyboard;
             _positiveDirectionKeyId = positiveDirectionKeyId;
@@ -39,7 +39,7 @@ namespace Epicycle.Input.Keyboard
 
         public event EventHandler<BidirectionalMovementKeysEventArgs> OnDirectionChange;
 
-        public IKeyboard<TKeyId> Keyboard
+        public IKeyboard<TKeyId, TAdditionalKeyEventData> Keyboard
         {
             get { return _keyboard; }
         }
@@ -56,7 +56,7 @@ namespace Epicycle.Input.Keyboard
 
         public BidirectionalMovement MovementDirection { get; private set; }
 
-        private void OnKeyEvent(object sender, KeyEventArgs<TKeyId> eventArgs)
+        private void OnKeyEvent(object sender, KeyEventArgs<TKeyId, TAdditionalKeyEventData> eventArgs)
         {
             if(eventArgs.EventType == KeyEventType.Repeat)
             {

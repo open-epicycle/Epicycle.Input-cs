@@ -25,9 +25,9 @@ namespace Epicycle.Input.Keyboard
     [TestFixture]
     public class KeyboardAdapterTest
     {
-        private Mock<IKeyboard<int>> _sourceKeyboardMock;
-        private KeyboardAdapter<string, int> _keyboardAdapter;
-        private KeyEventArgs<string> _keyEvent;
+        private Mock<IKeyboard<int, int>> _sourceKeyboardMock;
+        private KeyboardAdapter<string, int, int> _keyboardAdapter;
+        private KeyEventArgs<string, int> _keyEvent;
 
         [SetUp]
         public void SetUp()
@@ -35,7 +35,7 @@ namespace Epicycle.Input.Keyboard
             ResetKeyEvent();
 
             _sourceKeyboardMock = KeyboardTestUtils.CreateKeyboardMock();
-            _keyboardAdapter = new KeyboardAdapter<string, int>(_sourceKeyboardMock.Object);
+            _keyboardAdapter = new KeyboardAdapter<string, int, int>(_sourceKeyboardMock.Object);
 
             _keyboardAdapter.MapKey("a", 10);
             _keyboardAdapter.MapKey("b", 20);
@@ -86,15 +86,15 @@ namespace Epicycle.Input.Keyboard
         [Test]
         public void GetKeyState_retuns_source_state()
         {
-            _sourceKeyboardMock.SetKeyState(20, KeyEventType.Pressed);
-            Assert.That(_keyboardAdapter.GetKeyState("b"), Is.EqualTo(KeyEventType.Pressed));
+            _sourceKeyboardMock.SetKeyState(20, KeyState.Pressed);
+            Assert.That(_keyboardAdapter.GetKeyState("b"), Is.EqualTo(KeyState.Pressed));
         }
 
         [Test]
         [ExpectedException(typeof(NoSuchKeyExcpetion))]
         public void GetKeyState_non_mapped_key_throws_exception()
         {
-            _sourceKeyboardMock.SetKeyState(20, KeyEventType.Pressed);
+            _sourceKeyboardMock.SetKeyState(20, KeyState.Pressed);
             _keyboardAdapter.GetKeyState("x");
         }
 

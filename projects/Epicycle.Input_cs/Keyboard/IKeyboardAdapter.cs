@@ -18,9 +18,9 @@
 
 namespace Epicycle.Input.Keyboard
 {
-    public interface IKeyboardAdapter<TKeyId, TSourceKeyId> : IKeyboard<TKeyId>
+    public interface IKeyboardAdapter<TKeyId, TSourceKeyId, TAdditionalKeyEventData> : IKeyboard<TKeyId, TAdditionalKeyEventData>
     {
-        IKeyboard<TSourceKeyId> SourceKeyboard { get; }
+        IKeyboard<TSourceKeyId, TAdditionalKeyEventData> SourceKeyboard { get; }
 
         void MapKey(TKeyId keyId, TSourceKeyId sourceKeyId);
         bool IsThisKeyMapped(TKeyId keyId);

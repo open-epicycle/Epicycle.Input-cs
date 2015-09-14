@@ -26,10 +26,11 @@ namespace Epicycle.Input.Keyboard
         [Test]
         public void ctor_sets_properties_correctly()
         {
-            var eventArgs = new ToggleKeyEventArgs<int>(123, true);
+            var eventArgs = new ToggleKeyEventArgs<int, int>(123, true, 234);
 
             Assert.That(eventArgs.KeyId, Is.EqualTo(123));
             Assert.That(eventArgs.NewState, Is.True);
+            Assert.That(eventArgs.AdditionalData, Is.EqualTo(234));
         }
     }
 }

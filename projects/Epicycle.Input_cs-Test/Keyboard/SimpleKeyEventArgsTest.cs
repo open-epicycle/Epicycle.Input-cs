@@ -16,25 +16,20 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Input-cs
 // ]]]]
 
-using Moq;
+using NUnit.Framework;
 
 namespace Epicycle.Input.Keyboard
 {
-    internal static class KeyboardTestUtils
+    [TestFixture]
+    public class SimpleKeyEventArgsTest
     {
-        public static Mock<IKeyboard<int, int>> CreateKeyboardMock()
+        [Test]
+        public void ctor_sets_properties_correctly()
         {
-            return new Mock<IKeyboard<int, int>>(MockBehavior.Strict);
-        }
+            var eventArgs = new SimpleKeyEventArgs<int, int>(123, 234);
 
-        public static void SendKeyEvent(this Mock<IKeyboard<int, int>> @this, int keyId, KeyEventType eventType)
-        {
-            @this.Raise(m => m.OnKeyEvent += null, @this.Object, new KeyEventArgs<int, int>(keyId, eventType, 234));
-        }
-
-        public static void SetKeyState(this Mock<IKeyboard<int, int>> @this, int keyId, KeyState state)
-        {
-            @this.Setup(m => m.GetKeyState(keyId)).Returns(state);
+            Assert.That(eventArgs.KeyId, Is.EqualTo(123));
+            Assert.That(eventArgs.AdditionalData, Is.EqualTo(234));
         }
     }
 }

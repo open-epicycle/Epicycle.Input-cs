@@ -16,25 +16,23 @@
 // For more information check https://github.com/open-epicycle/Epicycle.Input-cs
 // ]]]]
 
-using Moq;
+using System;
 
 namespace Epicycle.Input.Keyboard
 {
-    internal static class KeyboardTestUtils
+    public abstract class KeyEventArgsBase<TKeyId, TAdditionalKeyEventData> : EventArgs
     {
-        public static Mock<IKeyboard<int, int>> CreateKeyboardMock()
+        private readonly TKeyId _keyId;
+        private readonly TAdditionalKeyEventData _additionalData;
+
+        public KeyEventArgsBase(TKeyId keyId, TAdditionalKeyEventData additionalData)
         {
-            return new Mock<IKeyboard<int, int>>(MockBehavior.Strict);
+            _keyId = keyId;
+            _additionalData = additionalData;
         }
 
-        public static void SendKeyEvent(this Mock<IKeyboard<int, int>> @this, int keyId, KeyEventType eventType)
-        {
-            @this.Raise(m => m.OnKeyEvent += null, @this.Object, new KeyEventArgs<int, int>(keyId, eventType, 234));
-        }
+        public TKeyId KeyId { get { return _keyId; } }
 
-        public static void SetKeyState(this Mock<IKeyboard<int, int>> @this, int keyId, KeyState state)
-        {
-            @this.Setup(m => m.GetKeyState(keyId)).Returns(state);
-        }
+        public TAdditionalKeyEventData AdditionalData { get { return _additionalData; } }
     }
 }

@@ -18,8 +18,9 @@
 
 namespace Epicycle.Input.Keyboard
 {
-    public interface IKeyboardBaseInput<TKeyId>
+    public enum KeyState
     {
-        IKeyboard<TKeyId> Keyboard { get; }
+        Pressed,
+        Released,
     }
 }
